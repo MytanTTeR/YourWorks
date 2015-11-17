@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="~/favicon.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Works - @ViewBag.Title</title>
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Your Works", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                <li>@Html.ActionLink("О сервисе", "About", "Home")</li>
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </div>
+    @RenderBody()
+    <div class="clear"></div>
+    <footer>
+        <div class="footer-content">
+            <div class="col-md-4">
+                <div class="footer-logo"></div>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-container">
+                    <h3>Описание</h3>
+                    <h4>
+                        Your Works - сервис, предоставляющий вам возможность собрать ваши работы и достижения в единую коллекцию, а также проголосовать за работы других пользователей.
+                    </h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-container">
+                    <h3>Информация</h3>
+                    <ul>
+                        <h4>
+                            <li>
+                                <a href="/Home/Rules">Правила</a>
+                            </li>
+                            <li>
+                                <a href="/Home/About">О нас</a>
+                            </li>
+                        </h4>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </footer>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,7 @@
+packages/
+YourWorks/bin/
+YourWorks/obj/
+YourWorks/packages.config
+YourWorks/YourWorks.csproj
+YourWorks/Web.config
+YourWorks.sln

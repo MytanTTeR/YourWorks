@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Профиль пользователя";
+}
+
+<div class="profile-header">
+    <content>
+        <div class="col-md-6">
+            <div class="profile-avatar">
+                <img src="/Content/Images/avatar.jpg">
+                <p>@User.Identity.Name</p>
+            </div>
+            <div class="profile-text">
+                <ul>
+                    <li><h5>Выложено работ</h5><h3>3 500</h3></li>
+                    <li><h5>В избранных у</h5><h3>120</h3></li>
+                    <li><h5>Голосов</h5><h3>12 600</h3></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="col-md-6">
+            <a href="/Manage" class="btn btn-info btn-lg profile-options">Настройки</a>
+        </div>
+        <div class="clear"></div>
+    </content>
+</div>
+
+<content>
+    <div class="profile-main">
+        <div>
+        </div>
+    </div>
+</content>
