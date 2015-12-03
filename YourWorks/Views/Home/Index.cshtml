@@ -2,65 +2,126 @@
     ViewBag.Title = "Главная";
 }
 <header>
-    <div class="header-noise">
-        <div class="header-info">
-            <div class="text">
-                <div class="logo">
-
+    <div class="file-content">
+        <div class="file">
+            <div class="file-paper">
+                <div class="file-paper-angle">
                 </div>
             </div>
-            <a href="/Portfolio/Create" class="btn btn-primary btn-lg">Создать свое портфолио</a>
         </div>
+        <div class="file-tr">
+            <div class="file-paper-tr">
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
-</header>
-<div class="search-form">
-    <div class="text-wrapper">
+    <div class="content logo">
         <center>
-            <h1>
-                Поиск по коллекциям
-            </h1>
-            <form action="" method="post" style="max-width: 300px;">
-                <div class="input-group">
-                    <input type="text" class="form-control search-field" placeholder="Чтобы бы вы хотели найти?" />
-                    <span class="input-group-btn">
-                        <input type="submit" class="btn btn-info search-btn" value="Искать" />
-                    </span>
-                </div>
-            </form>
-        </center>
-    </div>
-</div>
-<content>
-    <!--<div class="tabbable">
-        <ul class="nav nav-tabs tabs-left">
-            <li class="active"><a href="#tab1" data-toggle="tab">Фотосъемка</a></li>
-            <li><a href="#tab2" data-toggle="tab">Видеосъемка</a></li>
-            <li><a href="#tab3" data-toggle="tab">Искусство</a></li>
-            <li><a href="#tab4" data-toggle="tab">Web-дизайн</a></li>
-        </ul>
-        <div class="tab-content">
+            <div class="emblem"></div>
+            <div class="your-works">
+                <h1>Your Works</h1>
+                <h4>Ваши достижения в единой коллекции</h4>
 
-            <div class="tab-pane active" id="tab1">
-                <div class="col-lg-12">
-                    Тут фоточки
-                    <img src="~/Content/Images/img1.jpg" />
-                    <img src="~/Content/Images/img2.jpg" />
-                    <img src="~/Content/Images/img3.jpg" />
-                    <img src="~/Content/Images/img4.jpg" />
-                    <img src="~/Content/Images/img5.jpg" />
-                    <img src="~/Content/Images/img6.jpg" />
+                <div class="description">
+                    Вы можете создать ваше
+                    портфолио прямо сейчас!
+                    <a href="/portfolio/create" class="btn btn-success btn-large">Создать</a>
                 </div>
-            </div>
-            <div class="tab-pane" id="tab2">
-                <p>Тут видеосъемка</p>
-            </div>
-            <div class="tab-pane" id="tab3">
-                <p>Тут худ. искусство</p>
-            </div>
-            <div class="tab-pane" id="tab4">
-                <p>Тут веб-дизайн</p>
             </div>
             <div class="clear"></div>
+        </center>
+    </div>
+</header>
+<div class="search">
+    <div class="search-content">
+        <div class="btn-group btn-group-justified">
+            <div class="search-title">
+                Поиск по коллекциям
+            </div>
+            <form action="" method="post">
+                <input class="search-field" type="text" name="srch-value" placeholder="Поиск">
+                <input class="search-btn" type="submit" name="search" value="Искать">
+            </form>
         </div>
-    </div>-->
-</content>
+    </div>
+</div>
+<div class="wrapper">
+    <content>
+        <center>
+            <h1>Коллекции пользователей <img src="https://img-fotki.yandex.ru/get/5310/91024863.1fe/0_bdae2_e884ddf8_XXL" width="100px"></h1>
+            <div class="collection">
+                <div class="coll-prev">
+
+                </div>
+                <div class="coll-text">
+                    <div class="coll-info">
+                        <div class="coll-title">
+                            Flat Design
+                        </div>
+                        <div class="coll-desc">
+                            Description
+                        </div>
+                    </div>
+                    <div class="coll-stats">
+                        <ul>
+                            <li>Работ: 28</li>
+                            <li>Просмотров: 1200</li>
+                            <li>В избранных: 12</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collection">
+                <div class="coll-prev">
+
+                </div>
+                <div class="coll-text">
+                    <div class="coll-info">
+                        <div class="coll-title">
+                            Flat Design
+                        </div>
+                        <div class="coll-desc">
+                            Description
+                        </div>
+                    </div>
+                    <div class="coll-stats">
+                        <ul>
+                            <li>Работ: 28</li>
+                            <li>Просмотров: 1200</li>
+                            <li>В избранных: 12</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collection">
+                <div class="coll-prev">
+
+                </div>
+                <div class="coll-text">
+                    <div class="coll-info">
+                        <div class="coll-title">
+                            Flat Design
+                        </div>
+                        <div class="coll-desc">
+                            Description
+                        </div>
+                    </div>
+                    <div class="coll-stats">
+                        <ul>
+                            <li>Работ: 28</li>
+                            <li>Просмотров: 1200</li>
+                            <li>В избранных: 12</li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </center>
+        <div class="clear"></div>
+        <div class="coll-more">
+            Показать больше коллекций
+        </div>
+    </content>
+</div>	

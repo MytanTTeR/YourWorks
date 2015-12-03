@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YourWorks.Models;
 
 namespace YourWorks.Controllers
 {
@@ -32,33 +33,5 @@ namespace YourWorks.Controllers
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult Upload(HttpPostedFileBase upload)
-        {
-            if (upload != null)
-            {
-                string fileName = Path.GetFileName(upload.FileName);
-                upload.SaveAs(Server.MapPath("~/Files/" + fileName));
-            }
-            return RedirectToAction("Index");
-        }
-
-        //[HttpPost]
-        //public ActionResult Upload(IEnumerable<HttpPostedFileBase> uploads)
-        //{
-        //    if (uploads != null)
-        //    {
-        //        foreach (var file in uploads)
-        //        {
-        //            if (file != null)
-        //            {
-        //                string fileName = Path.GetFileName(file.FileName);
-        //                file.SaveAs(Server.MapPath("~/Files/" + fileName));
-        //            }
-        //        }
-        //    }
-        //    return RedirectToAction("Index");
-        //}
     }
 }

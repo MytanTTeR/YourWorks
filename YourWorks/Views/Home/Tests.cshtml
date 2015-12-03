@@ -1,0 +1,8 @@
+﻿@*@foreach (var achivement in @Model.achivements) 
+{ 
+    foreach (var field in achivement.additionalFields) 
+    {
+        @Html.Partial(field.viewAction, field);<br>
+    }
+    <br>
+}*@

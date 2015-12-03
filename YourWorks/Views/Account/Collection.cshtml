@@ -1,4 +1,6 @@
-﻿@{
+﻿@model YourWorks.Models.RedirectViewModel
+
+@{
     ViewBag.Title = "Профиль пользователя";
 }
 
@@ -7,7 +9,7 @@
 <div class="wrapper">
     <content>
         <div class="tabbable">
-            @Html.Action("ViewList", "AchivementCollections")
+            @Html.Action(Model.Action, Model.Controller, Model.Model)
         </div>
     </content>
 </div>
