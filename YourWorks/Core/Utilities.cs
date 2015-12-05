@@ -25,9 +25,11 @@ namespace YourWorks.Core
 
         public ItemViewModel ItemCreateAchivement(AchivementCollection collection)
         {
+            var factory = manager.GetFactory(collection);
             return new ItemViewModel()
             {
                 Name = "Добавить достижение",
+                ImageClass = factory.PreviewClass,
                 Redirect = new RedirectViewModel()
                 {
                     Action = "Create",
@@ -48,6 +50,7 @@ namespace YourWorks.Core
                 yield return new ItemViewModel()
                 {
                     Name = achivement.Name,
+                    ImageClass = factory.PreviewClass,
                     Redirect = new RedirectViewModel()
                     {
                         Action = "Details",

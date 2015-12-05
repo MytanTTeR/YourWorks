@@ -16,8 +16,9 @@ namespace YourWorks.Core.AchivementFactory
         public string ActionCreate { get { return null; } }
         public string ActionDelete { get { return null; } }
         public string Controller { get { return null; } }
+        public string PreviewClass { get { return null; } }
 
-        public IEnumerable<AbstractAchivement> GetAchivements () { return null; }
+        public IEnumerable<AbstractAchivement> GetAchivements() { return null; }
         public int GetCount() { return 0; }
     }
 }

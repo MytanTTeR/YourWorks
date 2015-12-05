@@ -11,16 +11,15 @@
 </ul>
 <div class="tab-content">
     <div class="tab-pane active icons" id="tab1">
-
         @if (Model.Create != null)
         {
-            <div class="folder add-folder" style="background: url(@Model.Create.ImageSrc) no-repeat">
+            <div class="@Model.Create.ImageClass">
                 @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, null)
             </div>
         }
         @foreach (var item in Model.Items)
         {
-            <div class="folder add-folder" style="background: url(@item.ImageSrc) no-repeat">
+            <div class="@item.ImageClass">
                 @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, null)
             </div>
         }
@@ -28,14 +27,14 @@
     <div class="tab-pane list" id="tab2">
         @if (Model.Create != null)
         {
-            <div class="folder add-folder" style="background: url(@Model.Create.ImageSrc) no-repeat">
+            <div class="@Model.Create.ImageClass">
                 @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, null)
             </div>
             <hr />
         }
         @foreach (var item in Model.Items)
         {
-            <div class="folder add-folder" style="background: url(@item.ImageSrc) no-repeat">
+            <div class="@item.ImageClass">
                 @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, null)
             </div>
             <hr />

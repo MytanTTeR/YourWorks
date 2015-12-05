@@ -1,4 +1,5 @@
-﻿@{
+﻿@model YourWorks.Models.Account.AccountHeaderViewModel
+@{
     Layout = "";
 }
 
@@ -12,7 +13,7 @@
                 <div class="profile-username">@User.Identity.Name</div>
             </div>
             <ul class="profile-stats">
-                <li>Выложено работ<br /><span>127</span></li>
+                <li>Выложено работ<br /><span>@Model.AchivementCount</span></li>
                 <li>В избранных<br /><span>283</span></li>
                 <li>Просмотров<br /><span>12313</span></li>
                 <li>Рейтинг<br /><span>214444</span></li>

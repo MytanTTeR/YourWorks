@@ -31,6 +31,10 @@ namespace YourWorks.Core.AchivementFactory
         {
             get { return "PhotoAchivements"; }
         }
+        public string PreviewClass
+        {
+            get { return "achive photo"; }
+        }
 
         public IEnumerable<AbstractAchivement> GetAchivements()
         {

@@ -16,7 +16,7 @@ namespace YourWorks.Models
     public class ItemViewModel
     {
         public string Name { get; set; }
-        public string ImageSrc { get; set; }
+        public string ImageClass { get; set; }
         public RedirectViewModel Redirect { get; set; }
     }
 

@@ -31,6 +31,10 @@ namespace YourWorks.Core.AchivementFactory
         {
             get { return "TextAchivements"; }
         }
+        public string PreviewClass
+        {
+            get { return "achive text"; }
+        }
 
         public IEnumerable<AbstractAchivement> GetAchivements()
         {

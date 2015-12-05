@@ -653,3 +653,39 @@ ul.profile{
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
+
+/*Achivements*/
+.list>.achive{
+    background: url("Images/achive.png") no-repeat;
+    width: 118px;
+    height: 84px;
+    padding-left: 130px;
+    padding-top: 11px;
+    font-size: 20px;
+    text-align: center;
+    margin: 40px 35px;
+}
+
+.icons>.achive {
+    background: url("Images/achive.png") no-repeat;
+    float: left;
+    width: 118px;
+    height: 84px;
+    padding-top: 84px;
+    font-size: 20px;
+    text-align: center;
+    margin: 70px 35px;
+}
+
+.achive:hover{
+    cursor: pointer;
+}
+.photo{    
+	background-position: -233px -480px !important;
+}
+.text{
+	background-position: -670px -480px !important;
+}
+.video{
+	background-position: -121px -261px !important;
+}

@@ -12,6 +12,7 @@ namespace YourWorks.Core.AchivementFactory
         AchivementContext db { get; set; }
         AchivementCollection Collection { get; set; }
 
+        string PreviewClass { get; }
         string ActionDetails { get; }
         string ActionEdit { get; }
         string ActionCreate { get; }

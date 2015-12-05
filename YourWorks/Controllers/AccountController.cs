@@ -11,6 +11,8 @@ using Duke.Owin.VkontakteMiddleware;
 using Microsoft.Owin.Security;
 using YourWorks.Models;
 using Duke.Owin.VkontakteMiddleware.Provider;
+using YourWorks.Models.Account;
+using YourWorks.Core;
 
 namespace YourWorks.Controllers
 {
@@ -19,9 +21,12 @@ namespace YourWorks.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private AchivementContext db = new AchivementContext();
+        private Utilities utility;
 
         public AccountController()
         {
+            utility = new Utilities(db);
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -412,7 +417,21 @@ namespace YourWorks.Controllers
 
         public ActionResult Header()
         {
-            return View();
+            var userAchivements = db.AchivementCollections.ToArray();
+
+            int count = 0;
+
+            foreach (var item in userAchivements)
+	        {
+		        count += utility.AchivementCount(item);
+	        }
+            
+            var model = new AccountHeaderViewModel()
+            {
+                AchivementCount = count
+            };
+
+            return View(model);
         }
 
         public ActionResult Collection(int? id)
