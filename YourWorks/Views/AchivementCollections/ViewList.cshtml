@@ -13,30 +13,22 @@
     <div class="tab-pane active icons" id="tab1">
         @if (Model.Create != null)
         {
-            <div class="@Model.Create.FolderClass">
-                @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, null)
-            </div>
+            @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new { @class = @Model.Create.FolderClass })
         }
         @foreach (var item in Model.Items)
         {
-            <div class="@item.FolderClass">
-                @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, null)
-            </div>
+            @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new { @class = @item.FolderClass })
         }
     </div>
     <div class="tab-pane list" id="tab2">
         @if (Model.Create != null)
         {
-            <div class="@Model.Create.FolderClass">
-                @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, null)
-            </div>
+            @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new { @class = @Model.Create.FolderClass })
             <hr />
         }
         @foreach (var item in Model.Items)
         {
-            <div class="@item.FolderClass">
-                @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, null)
-            </div>
+            @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new { @class = @item.FolderClass })
             <hr />
         }
     </div>

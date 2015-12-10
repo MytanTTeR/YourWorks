@@ -3,41 +3,47 @@
 @{
     ViewBag.Title = "Details";
 }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<div class="achivement">
 
-<h2>Details</h2>
-
-<div>
-    <h4>TextAchivement</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-
-    </dl>
+    <div class="work-title">
+        <h1>@Model.Name</h1>
+    </div>
+    @Model.Text
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TextAchivementID }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.TextAchivementID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="wrapper">
+    <content>
+        <div class="col-md-6">
+            <div class="autor">
+                <center>
+                    <img class="profile-avatar round" />
+                    <div class="autor-info">
+                        <div class="profile-username">@User.Identity.Name</div>
+                        <div class="profile-rate" title="Рейтинг">@ViewBag.UserRate</div>
+                        <div class="clear"></div>
+                    </div>
+                </center>
+                <div class="clear"></div>
+            </div>
+            <div class="work-desc">
+                <h2>Описание</h2>
+                <p>@Model.Description</p>
+            </div>
+            <div class="rate" id="rate">
+                @Html.Partial("Rate")
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="comments">
+                <h2>Комментарии</h2>
+                <div id="vk_comments"></div>
+            </div>
+        </div>
+    </content>
+</div>
+
+<script type="text/javascript" src="http://vk.com/js/api/openapi.js?121"></script>
+<script type="text/javascript">VK.init({apiId: 5097922, onlyWidgets: true});</script>
+<script type="text/javascript">VK.Widgets.Comments("vk_comments", {limit: 10, width: "*", attach: "*"});</script>

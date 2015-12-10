@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -9,12 +10,16 @@ using System.Web.Mvc;
 namespace YourWorks.Models
 {
     public enum AchivementTypes { Photo, Text }
+    public enum RateType { Positive, Negative }
+
     public class AchivementContext : DbContext
     {
         public DbSet<AchivementCollection> AchivementCollections { get; set; }
         public DbSet<TextAchivement> TextAchivements { get; set; }
         public DbSet<PhotoAchivement> PhotoAchivements { get; set; }
         public DbSet<AchivementRate> AchivementRates { get; set; }
+        public DbSet<FavoriteUser> FavoriteUsers { get; set; }
+        public DbSet<UserRate> UserRates { get; set; }
 
         public AchivementContext() : base("DefaultConnection") { }
     }
@@ -22,34 +27,44 @@ namespace YourWorks.Models
     [Bind(Include = "Name, AchivementType")]
     public class AchivementCollection
     {
+        [Key]
         public int ID { get; set; }
+        
         public string UserID { get; set; }
+        
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
+        
+        [Required]
         public AchivementTypes AchivementType { get; set; }
     }
 
-    //public interface IAchivement
-    //{
-    //    int ID { get; set; }
-    //    int AchivementCollectionID { get; set; }
-    //    AchivementCollection Collection { get; set; }
-    //    string Name { get; set; }
-    //    string Description { get; set; }
-    //    ICollection<AchivementRate> Rates { get; set; }
-    //}
-
     public class AbstractAchivement
     {
+        [Key]
         public int ID { get; set; }
+
+        [Column("CollectionID")]
         public int AchivementCollectionID { get; set; }
+
+        [ForeignKey("AchivementCollectionID")]
         public AchivementCollection Collection { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
+        
+        [StringLength(250)]
         public string Description { get; set; }
+
+        public int Views { get; set; }
     } 
 
     [Bind(Include = "Name, Description, Text, AchivementCollectionID")]
     public class TextAchivement : AbstractAchivement
     {
+        [Required]
         public string Text { get; set; }
     }
 
@@ -59,15 +74,40 @@ namespace YourWorks.Models
         public string PhotoName { get; set; }
     }
 
-    public enum RateType { Positive, Negative }
-
     [Bind(Include = "AchivementID, AchivementType, Type")]
     public class AchivementRate
     {
-        public int AchivementRateID { get; set; }
+        [Key]
+        public int ID { get; set; }
+        
         public string UserID { get; set; }
+        
         public int AchivementID { get; set; }
+        
         public AchivementTypes AchivementType { get; set; }
+        
         public RateType Type { get; set; }
+    }
+
+    [Bind(Include = "ID, UserID, Type")]
+    public class UserRate
+    {
+        [Key]
+        public int ID { get; set; }
+
+        public string UserID { get; set; }
+
+        public RateType Type { get; set; }
+    }
+
+    [Bind(Include = "ID, UserID, ToUserID")]
+    public class FavoriteUser
+    {
+        [Key]
+        public int ID { get; set; }
+
+        public string UserID { get; set; }
+
+        public string ToUserID { get; set; }
     }
 }

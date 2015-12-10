@@ -1,16 +1,15 @@
-﻿@model YourWorks.Models.PhotoAchivements.PhotoAchivementsView
+﻿@model YourWorks.Models.PhotoAchivement
 
 @{
     ViewBag.Title = "Details";
 }
-
 <div class="achivement">
 
     <div class="work-title">
-        <h1>@Model.Achivement.Name</h1>
+        <h1>@Model.Name</h1>
         <div class="file-icon file-icon-default file-title" data-type="jpg"></div>
     </div>
-    <img src="@Model.Photo" width="100%" />
+    <img src="~/Uploads/PhotoAchivements/Photo/@Model.PhotoName" width="100%" />
 </div>
 
 <div class="wrapper">
@@ -21,7 +20,7 @@
                     <img class="profile-avatar round"/>
                     <div class="autor-info">
                         <div class="profile-username">@User.Identity.Name</div>
-                        <div class="profile-rate" title="Рейтинг">4000</div>
+                        <div class="profile-rate" title="Рейтинг">@ViewBag.UserRate</div>
                         <div class="clear"></div>
                     </div>
                 </center>
@@ -29,14 +28,10 @@
             </div>
             <div class="work-desc">
                 <h2>Описание</h2>
-                <p>@Model.Achivement.Description</p>
+                <p>@Model.Description</p>
             </div>
-            <div class="rate">
-                <h2>Рейтинг <span>@Model.Rate</span></h2>
-                <div class="btn btn-group-justified">
-                    @Html.ActionLink("+", "RatePositive", "PhotoAchivements", new { id = Model.Achivement.ID }, new { @class = "btn btn-success btn-lg" })
-                    @Html.ActionLink("-", "RateNegative", "PhotoAchivements", new { id = Model.Achivement.ID }, new { @class = "btn btn-danger btn-lg" })
-                </div>
+            <div class="rate" id="rate">
+                @Html.Partial("Rate")
             </div>
         </div>
         <div class="col-md-6">

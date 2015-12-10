@@ -36,27 +36,6 @@ namespace YourWorks.Controllers
             return View(model);
         }
 
-        //public ActionResult AchievmentRedirect(int? id, AchivementTypes type, string actionType)
-        //{
-        //    RedirectViewModel model;
-
-        //    switch (actionType)
-        //    {
-        //        case "AddAchivement":
-                    
-        //            model = utility.RedirectCreateAchivement(collection)
-        //        case "Details":
-
-        //        case "Edit":
-
-        //        case "Delete":
-
-        //        default:
-        //    }
-
-        //    return View(utility.RedirectCreateAchivement(db.AchivementCollections.Find(id)));
-        //}
-
         // GET: AchivementCollections/Details/5
         public ActionResult Details(int? id)
         {
@@ -85,7 +64,7 @@ namespace YourWorks.Controllers
                 achivementCollection.UserID = User.Identity.GetUserId();
                 db.AchivementCollections.Add(achivementCollection);
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("Profile", "Account");
             }
 
             return View(achivementCollection);

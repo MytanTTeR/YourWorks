@@ -26,7 +26,29 @@ namespace YourWorks.Controllers.Achivements
             {
                 return HttpNotFound();
             }
+            var Rates = db.AchivementRates.Where(x => x.AchivementID == textAchivement.ID && x.AchivementType == AchivementTypes.Text);
+            var Collection = db.AchivementCollections.Find(textAchivement.AchivementCollectionID);
+            ViewBag.Rate = Rates.Where(x => x.Type == RateType.Positive).Count() - Rates.Where(x => x.Type == RateType.Negative).Count();
+            ViewBag.UserRate = db.UserRates.Where(x => x.UserID == Collection.UserID).Count();
             return View(textAchivement);
+        }
+        public ActionResult Rate(int id, RateType type)
+        {
+            var userID = User.Identity.GetUserId();
+            var new_rate = new AchivementRate()
+            {
+                AchivementID = id,
+                AchivementType = AchivementTypes.Text,
+                Type = type,
+                UserID = userID
+            };
+            db.AchivementRates.Add(new_rate);
+            db.SaveChanges();
+            var rates = db.AchivementRates.Where(x => x.AchivementID == id && x.AchivementType == AchivementTypes.Text);
+            var rate = rates.Where(x => x.Type == RateType.Positive).Count() - rates.Where(x => x.Type == RateType.Negative).Count();
+            ViewBag.Rate = rate;
+            ViewBag.IsRated = true;
+            return PartialView("Rate");
         }
 
         // GET: TextAchivements/Create
@@ -47,7 +69,7 @@ namespace YourWorks.Controllers.Achivements
             {
                 db.TextAchivements.Add(textAchivement);
                 db.SaveChanges();
-                return View(textAchivement);
+                return RedirectToAction("Collection", "Account", new { id = textAchivement.AchivementCollectionID });
             }
 
             return View(textAchivement);

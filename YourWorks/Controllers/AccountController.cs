@@ -417,21 +417,18 @@ namespace YourWorks.Controllers
 
         public ActionResult Header()
         {
-            var userAchivements = db.AchivementCollections.ToArray();
+            var userID = User.Identity.GetUserId();
+            var userAchivements = db.AchivementCollections.Where(x => x.UserID == userID).ToArray();
 
-            int count = 0;
-
+            int achivementsCount = 0;
             foreach (var item in userAchivements)
-	        {
-		        count += utility.AchivementCount(item);
-	        }
+		        achivementsCount += utility.AchivementCount(item);
             
-            var model = new AccountHeaderViewModel()
-            {
-                AchivementCount = count
-            };
+            ViewBag.AchivementCount = achivementsCount;
+            ViewBag.FavoritesCount = db.FavoriteUsers.Where(x => x.UserID == userID).Count();
+            ViewBag.Rate = db.UserRates.Where(x => x.UserID == userID).Count();
 
-            return View(model);
+            return View();
         }
 
         public ActionResult Collection(int? id)

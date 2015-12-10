@@ -1,0 +1,8 @@
+﻿<h2>Рейтинг <span> @ViewBag.Rate </span></h2>
+@if (!ViewBag.IsRated)
+{
+    <div class="btn btn-group-justified">
+        @Ajax.ActionLink("+", "Rate", "PhotoAchivements", new { id = Model.ID, type = YourWorks.Models.RateType.Positive }, new AjaxOptions { UpdateTargetId = "rate" }, new { @class = "btn btn-success btn-lg" })
+        @Ajax.ActionLink("-", "Rate", "PhotoAchivements", new { id = Model.ID, type = YourWorks.Models.RateType.Negative }, new AjaxOptions { UpdateTargetId = "rate" }, new { @class = "btn btn-danger btn-lg" })
+    </div>
+}

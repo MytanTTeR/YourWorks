@@ -23,6 +23,7 @@ namespace YourWorks.Controllers.Achivements
         // GET: PhotoAchivements
         public ActionResult Details(int? id)
         {
+            var userID = User.Identity.GetUserId();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -33,14 +34,30 @@ namespace YourWorks.Controllers.Achivements
                 return HttpNotFound();
             }
             var Rates = db.AchivementRates.Where(x => x.AchivementID == photoAchivement.ID && x.AchivementType == AchivementTypes.Photo);
-            var model = new PhotoAchivementsView()
+            var Collection = db.AchivementCollections.Find(photoAchivement.AchivementCollectionID);
+            ViewBag.Rate = Rates.Where(x => x.Type == RateType.Positive).Count() - Rates.Where(x => x.Type == RateType.Negative).Count();
+            ViewBag.UserRate = db.UserRates.Where(x => x.UserID == Collection.UserID).Count();
+            ViewBag.IsRated = Rates.Where(x => x.UserID == userID).Count() != 0;
+            return View(photoAchivement);
+        }
+
+        public ActionResult Rate(int id, RateType type)
+        {
+            var userID = User.Identity.GetUserId();
+            var new_rate = new AchivementRate()
             {
-                Achivement = photoAchivement,
-                Photo = "/Uploads/PhotoAchivements/Photo/" + photoAchivement.PhotoName,
-                Rate = Rates.Where(x => x.Type == RateType.Positive).Count() - Rates.Where(x => x.Type == RateType.Negative).Count(),
+                AchivementID = id,
+                AchivementType = AchivementTypes.Photo,
+                Type = type,
+                UserID = userID
             };
-            
-            return View(model);
+            db.AchivementRates.Add(new_rate);
+            db.SaveChanges();
+            var rates = db.AchivementRates.Where(x => x.AchivementID == id && x.AchivementType == AchivementTypes.Photo);
+            var rate = rates.Where(x => x.Type == RateType.Positive).Count() - rates.Where(x => x.Type == RateType.Negative).Count();
+            ViewBag.Rate = rate;
+            ViewBag.IsRated = true;
+            return PartialView("Rate");
         }
 
         // GET: PhotoAchivements/Create
@@ -62,7 +79,7 @@ namespace YourWorks.Controllers.Achivements
                 photoAchivement.PhotoName = Download.SaveFile(photo, "~/Uploads/PhotoAchivements/Photo/");
                 db.PhotoAchivements.Add(photoAchivement);
                 db.SaveChanges();
-                return View(photoAchivement);
+                return RedirectToAction("Collection", "Account", new { id = photoAchivement.AchivementCollectionID });
             }
 
             return View(photoAchivement);
