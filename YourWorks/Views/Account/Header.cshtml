@@ -3,20 +3,22 @@
 }
 
 <header>
-    <div class="profile-bg">
-        <div class="file-paper-angle">
-        </div>
-        <div class="profile-bg-wrapper">
-            <div class="profile-info-block">
-                <div class="profile-avatar"></div>
-                <div class="profile-username">@User.Identity.Name</div>
+    <div class="profile">
+        <div class="profile-bg" style="background: url(http://pic4.bbzhi.com/qitabizhi/feizhuliushoujibizhixiazai/feizhuliushoujibizhixiazai_348918_16.jpg) no-repeat; background-position: 50%; background-size: 100% auto;">
+            @*<div class="file-paper-angle">
+                </div>*@
+            <div class="profile-bg-wrapper">
+                <div class="profile-info-block">
+                    <div class="profile-avatar"></div>
+                    <div class="profile-username">@User.Identity.Name</div>
+                </div>
+                <ul class="profile-stats">
+                    <li>Выложено работ<br /><span>@ViewBag.AchivementCount</span></li>
+                    <li>В избранных<br /><span>@ViewBag.FavoritesCount</span></li>
+                    <li>Просмотров<br /><span>@ViewBag.Views</span></li>
+                    <li>Рейтинг<br /><span>@ViewBag.Rate</span></li>
+                </ul>
             </div>
-            <ul class="profile-stats">
-                <li>Выложено работ<br /><span>@ViewBag.AchivementCount</span></li>
-                <li>В избранных<br /><span>@ViewBag.FavoritesCount</span></li>
-                <li>Просмотров<br /><span>@ViewBag.Views</span></li>
-                <li>Рейтинг<br /><span>@ViewBag.Rate</span></li>
-            </ul>
         </div>
     </div>
 </header>

@@ -433,7 +433,7 @@ namespace YourWorks.Controllers
 
         public ActionResult Collection(int? id)
         {
-            string actionType = Request.QueryString["actionType"] ?? "Details";
+            string actionType = Request.QueryString["actionType"] ?? "Achives";
 
             var model = new RedirectViewModel()
             {
@@ -448,7 +448,7 @@ namespace YourWorks.Controllers
             }
             else model.Model = new { id = id };
 
-            if (new string[] { "Details", "Edit", "Delete", "AddAchivement" }.Contains(actionType)) return View(model);
+            if (new string[] { "Achives", "Edit", "Delete", "AddAchivement" }.Contains(actionType)) return View(model);
             else throw new Exception();
         }
 

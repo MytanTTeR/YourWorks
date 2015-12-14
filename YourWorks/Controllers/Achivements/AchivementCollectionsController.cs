@@ -39,16 +39,55 @@ namespace YourWorks.Controllers
         // GET: AchivementCollections/Details/5
         public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             AchivementCollection collection = db.AchivementCollections.Find(id);
+
+            if (collection == null)
+            {
+                return HttpNotFound();
+            }
+
             var model = new AchivementCollectionsDetails()
             {
-                Items = utility.ItemsDetailsAchivements(collection),
+                Name = collection.Name,
+                Items = utility.ItemDetailsAchivements(collection),
                 Create = utility.ItemCreateAchivement(collection)
             };
+
+            return View(model);
+        }
+
+        // GET: AchivementCollections/Achives/5
+        public ActionResult Achives(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            AchivementCollection collection = db.AchivementCollections.Find(id);
+
+            if (collection == null)
+            {
+                return HttpNotFound();
+            }
+
+            var model = new AchivementCollectionsDetails()
+            {
+                Name = collection.Name,
+                Items = utility.ItemDetailsAchivements(collection),
+                Create = utility.ItemCreateAchivement(collection)
+            };
+
             return View(model);
         }
 
         // GET: AchivementCollections/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -57,6 +96,7 @@ namespace YourWorks.Controllers
         // POST: AchivementCollections/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create(AchivementCollection achivementCollection)
         {
             if (ModelState.IsValid)

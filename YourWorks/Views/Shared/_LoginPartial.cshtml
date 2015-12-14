@@ -6,9 +6,18 @@
     {
         @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right">
-            <li>@Html.ActionLink("Профиль", "Profile", "Account", null, new { @class = "mini-avatar" })</li>
-            <li>@Html.ActionLink("99+", "Messages", "Account")</li>
-            @*<li><a href="javascript:document.getElementById('logoutForm').submit()" >Выйти</a></li>*@
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle mini-avatar" data-toggle="dropdown">@User.Identity.Name</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink("Профиль", "Profile", "Account")
+                    </li>
+                    @*<li class="divider"></li>
+                        <li>@Html.ActionLink("99+ уведомлений", "Messages", "Account")</li>*@
+                    <li class="divider"></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+                </ul>
+            </li>
         </ul>
     }
 }

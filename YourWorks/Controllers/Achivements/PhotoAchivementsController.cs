@@ -29,15 +29,18 @@ namespace YourWorks.Controllers.Achivements
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PhotoAchivement photoAchivement = db.PhotoAchivements.Find(id);
+
             if (photoAchivement == null)
             {
                 return HttpNotFound();
             }
+
             var Rates = db.AchivementRates.Where(x => x.AchivementID == photoAchivement.ID && x.AchivementType == AchivementTypes.Photo);
             var Collection = db.AchivementCollections.Find(photoAchivement.AchivementCollectionID);
             ViewBag.Rate = Rates.Where(x => x.Type == RateType.Positive).Count() - Rates.Where(x => x.Type == RateType.Negative).Count();
             ViewBag.UserRate = db.UserRates.Where(x => x.UserID == Collection.UserID).Count();
             ViewBag.IsRated = Rates.Where(x => x.UserID == userID).Count() != 0;
+
             return View(photoAchivement);
         }
 

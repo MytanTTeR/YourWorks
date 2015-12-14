@@ -4,32 +4,34 @@
     Layout = "";
 }
 
+@if (Model.Create != null)
+{
+    @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new {@class = @Model.Create.FolderClass})
+}
 
-<ul class="nav nav-tabs profile">
-    <li class="active"><a href="#tab1" data-toggle="tab">Иконки</a></li>
-    <li><a href="#tab2" data-toggle="tab">Список</a></li>
-</ul>
-<div class="tab-content">
-    <div class="tab-pane active icons" id="tab1">
-        @if (Model.Create != null)
-        {
-            @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new { @class = @Model.Create.FolderClass })
-        }
-        @foreach (var item in Model.Items)
-        {
-            @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new { @class = @item.FolderClass })
-        }
-    </div>
-    <div class="tab-pane list" id="tab2">
-        @if (Model.Create != null)
-        {
-            @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new { @class = @Model.Create.FolderClass })
-            <hr />
-        }
-        @foreach (var item in Model.Items)
-        {
-            @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new { @class = @item.FolderClass })
-            <hr />
-        }
-    </div>
-</div>
+@foreach (var item in Model.Items)
+{
+    @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new {@class = @item.FolderClass})
+}
+
+@*<ul class="nav nav-tabs profile">
+        <li class="active"><a href="#tab1" data-toggle="tab">Иконки</a></li>
+        <li><a href="#tab2" data-toggle="tab">Список</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active icons" id="tab1">
+
+        </div>
+        <div class="tab-pane list" id="tab2">
+            @if (Model.Create != null)
+            {
+                @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new { @class = @Model.Create.FolderClass })
+                <hr />
+            }
+            @foreach (var item in Model.Items)
+            {
+                @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new { @class = @item.FolderClass })
+                <hr />
+            }
+        </div>
+    </div>*@

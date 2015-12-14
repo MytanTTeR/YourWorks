@@ -7,9 +7,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Works - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet/less" type="text/css" href="~/Content/Site.less">
 </head>
 <body>
-    
     <div class="navbar">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +39,6 @@
             </div>
             <div class="col-md-4">
                 <div class="footer-container">
-                    <h3>Описание</h3>
                     <h4>
                         Your Works - сервис, предоставляющий вам возможность собрать ваши работы и достижения в единую коллекцию, а также проголосовать за работы других пользователей.
                     </h4>
@@ -46,7 +46,6 @@
             </div>
             <div class="col-md-4">
                 <div class="footer-container">
-                    <h3>Информация</h3>
                     <ul>
                         <h4>
                             <li>
@@ -63,7 +62,6 @@
         </div>
     </footer>
 
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

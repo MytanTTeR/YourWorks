@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -9,7 +10,13 @@ using System.Web.Mvc;
 
 namespace YourWorks.Models
 {
-    public enum AchivementTypes { Photo, Text }
+    public enum AchivementTypes
+    {
+        [Display(Name = "Фото")]
+        Photo,
+        [Display(Name = "Текст")]
+        Text
+    }
     public enum RateType { Positive, Negative }
 
     public class AchivementContext : DbContext
@@ -34,9 +41,11 @@ namespace YourWorks.Models
         
         [Required]
         [StringLength(50)]
+        [DisplayName("Имя коллекции")]
         public string Name { get; set; }
         
         [Required]
+        [DisplayName("Тип коллекции")]
         public AchivementTypes AchivementType { get; set; }
     }
 
@@ -53,9 +62,11 @@ namespace YourWorks.Models
 
         [Required]
         [StringLength(50)]
+        [DisplayName("Имя")]
         public string Name { get; set; }
         
         [StringLength(250)]
+        [DisplayName("Описание")]
         public string Description { get; set; }
 
         public int Views { get; set; }
@@ -71,6 +82,7 @@ namespace YourWorks.Models
     [Bind(Include = "Name, Description, AchivementCollectionID")]
     public class PhotoAchivement : AbstractAchivement
     {
+        [DisplayName("Файл")]
         public string PhotoName { get; set; }
     }
 

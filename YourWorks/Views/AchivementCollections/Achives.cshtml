@@ -1,0 +1,17 @@
+﻿@model YourWorks.Models.AchivementCollections.AchivementCollectionsDetails
+
+
+@{
+    Layout = "";
+    ViewBag.Title = Model.Name;
+}
+<div class="wrapper">
+    <content>
+        @Html.ActionLink(Model.Create.Name, Model.Create.Redirect.Action, Model.Create.Redirect.Controller, Model.Create.Redirect.Model, new { @class = @Model.Create.ImageClass })
+
+        @foreach (var item in Model.Items)
+        {
+            @Html.ActionLink(item.Name, item.Redirect.Action, item.Redirect.Controller, item.Redirect.Model, new { @class = @item.ImageClass })
+        }
+    </content>
+</div>

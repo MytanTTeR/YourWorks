@@ -1,7 +1,6 @@
 ﻿@model YourWorks.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<hr />
 <h4>Войти при помощи</h4>
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();

@@ -42,7 +42,7 @@ namespace YourWorks.Core
             };
         }
 
-        public IEnumerable<ItemViewModel> ItemsDetailsAchivements(AchivementCollection collection)
+        public IEnumerable<ItemViewModel> ItemDetailsAchivements(AchivementCollection collection)
         {
             var factory = GetFactory(collection);
             foreach (var achivement in factory.GetAchivements())
@@ -72,12 +72,8 @@ namespace YourWorks.Core
                 FolderClass = "folder add-folder",
                 Redirect = new RedirectViewModel()
                 {
-                    Action = "Collection",
-                    Controller = "Account",
-                    Model = new
-                    {
-                        actionType = "Create"
-                    }
+                    Action = "Create",
+                    Controller = "AchivementCollections"
                 }
             };
         }
@@ -89,7 +85,7 @@ namespace YourWorks.Core
             {
                 if (AchivementCount(collection) != 0) type = "folder file-folder";
                 else type = "folder empty-folder";
-
+                
                 yield return new FolderViewModel()
                 {
                     Name = collection.Name,

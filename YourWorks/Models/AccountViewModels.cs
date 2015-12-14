@@ -6,7 +6,7 @@ namespace YourWorks.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
     }
 
@@ -42,14 +42,14 @@ namespace YourWorks.Models
     public class ForgotViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "E-mail")]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -66,7 +66,7 @@ namespace YourWorks.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Required]
@@ -75,6 +75,7 @@ namespace YourWorks.Models
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Подтверждение пароля")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
@@ -85,7 +86,7 @@ namespace YourWorks.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Адрес электронной почты")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Required]
