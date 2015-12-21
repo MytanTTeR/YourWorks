@@ -10,6 +10,7 @@ namespace YourWorks.Models
     public class ApplicationUser : IdentityUser
     {
         public string Avatar { get; set; }
+        public string Header { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

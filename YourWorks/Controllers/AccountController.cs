@@ -11,6 +11,7 @@ using Duke.Owin.VkontakteMiddleware;
 using Microsoft.Owin.Security;
 using YourWorks.Models;
 using Duke.Owin.VkontakteMiddleware.Provider;
+using Microsoft.AspNet.Identity.EntityFramework;
 using YourWorks.Models.Account;
 using YourWorks.Core;
 
@@ -418,6 +419,13 @@ namespace YourWorks.Controllers
         public ActionResult Header()
         {
             var userID = User.Identity.GetUserId();
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(userID);
+            if (currentUser.Avatar == null)
+            {
+                currentUser.Avatar = "noavatar.jpg";
+            }
+
             var userAchivements = db.AchivementCollections.Where(x => x.UserID == userID).ToArray();
 
             int achivementsCount = 0;
@@ -427,6 +435,7 @@ namespace YourWorks.Controllers
             ViewBag.AchivementCount = achivementsCount;
             ViewBag.FavoritesCount = db.FavoriteUsers.Where(x => x.UserID == userID).Count();
             ViewBag.Rate = db.UserRates.Where(x => x.UserID == userID).Count();
+            ViewBag.User = currentUser;
 
             return View();
         }

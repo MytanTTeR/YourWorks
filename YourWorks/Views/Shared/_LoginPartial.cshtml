@@ -1,13 +1,21 @@
 ﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using YourWorks.Models
 
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
+        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+        var currentUser = manager.FindById(User.Identity.GetUserId());
+        if (@currentUser.Avatar == null)
+        {
+            currentUser.Avatar = "noavatar.jpg";
+        }
         @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle mini-avatar" data-toggle="dropdown">@User.Identity.Name</a>
+                <a href="#" class="dropdown-toggle mini-avatar" data-toggle="dropdown" style="background: url('../Uploads/Avatars/@currentUser.Avatar'); background-size: 100% 100%;">@User.Identity.Name</a>
                 <ul class="dropdown-menu">
                     <li>
                         @Html.ActionLink("Профиль", "Profile", "Account")

@@ -12,7 +12,9 @@ namespace YourWorks.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var collections = (new AchivementContext()).AchivementCollections.ToList();
+
+            return View(collections);
         }
 
         public ActionResult About()

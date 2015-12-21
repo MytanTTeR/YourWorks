@@ -65,6 +65,7 @@ namespace YourWorks.Controllers.Achivements
         public ActionResult Create(TextAchivement textAchivement)
         {
             AchivementCollection c = db.AchivementCollections.Find(textAchivement.AchivementCollectionID);
+
             if (ModelState.IsValid && c.UserID == User.Identity.GetUserId() && c.AchivementType == AchivementTypes.Text)
             {
                 db.TextAchivements.Add(textAchivement);

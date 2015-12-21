@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<YourWorks.Models.AchivementCollection>
+@{
     ViewBag.Title = "Главная";
 }
 <header>
@@ -37,75 +38,31 @@
         <center>
             <h1>Коллекции пользователей <img src="https://img-fotki.yandex.ru/get/5310/91024863.1fe/0_bdae2_e884ddf8_XXL" width="100px"></h1>
             <div class="collection-wrapper">
-                <div class="collection">
-                    <div class="collection-prev">
+                @foreach (var item in Model)
+                {
+                    <div class="collection">
+                        <div class="collection-prev">
 
-                    </div>
-                    <div class="collection-text">
-                        <div class="collection-info">
-                            <div class="collection-title">
-                                Flat Design
-                            </div>
-                            <div class="collection-desc">
-                                Description
-                            </div>
                         </div>
-                        <div class="collection-stats">
-                            <ul>
-                                <li>Работ: 28</li>
-                                <li>Просмотров: 1200</li>
-                                <li>В избранных: 12</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="collection">
-                    <div class="collection-prev">
-
-                    </div>
-                    <div class="collection-text">
-                        <div class="collection-info">
-                            <div class="collection-title">
-                                Flat Design
+                        <div class="collection-text">
+                            <div class="collection-info">
+                                <div class="collection-title">
+                                    Flat Design
+                                </div>
+                                <div class="collection-desc">
+                                    Description
+                                </div>
                             </div>
-                            <div class="collection-desc">
-                                Description
+                            <div class="collection-stats">
+                                <ul>
+                                    <li>Работ: 28</li>
+                                    <li>Просмотров: 1200</li>
+                                    <li>В избранных: 12</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="collection-stats">
-                            <ul>
-                                <li>Работ: 28</li>
-                                <li>Просмотров: 1200</li>
-                                <li>В избранных: 12</li>
-                            </ul>
-                        </div>
                     </div>
-                </div>
-
-                <div class="collection">
-                    <div class="collection-prev">
-
-                    </div>
-                    <div class="collection-text">
-                        <div class="collection-info">
-                            <div class="collection-title">
-                                Flat Design
-                            </div>
-                            <div class="collection-desc">
-                                Description
-                            </div>
-                        </div>
-                        <div class="collection-stats">
-                            <ul>
-                                <li>Работ: 28</li>
-                                <li>Просмотров: 1200</li>
-                                <li>В избранных: 12</li>
-                            </ul>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
+                }
                 <div class="clear"></div>
             </div>
         </center>

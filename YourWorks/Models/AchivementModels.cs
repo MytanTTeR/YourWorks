@@ -67,6 +67,7 @@ namespace YourWorks.Models
         
         [StringLength(250)]
         [DisplayName("Описание")]
+        [DataType(DataType.Text)]
         public string Description { get; set; }
 
         public int Views { get; set; }
@@ -76,6 +77,7 @@ namespace YourWorks.Models
     public class TextAchivement : AbstractAchivement
     {
         [Required]
+        [DisplayName("Текст")]
         public string Text { get; set; }
     }
 
